@@ -1,0 +1,142 @@
+# Task 1
+print("Note: Be aware of upper and lower case in spellings when booking")
+print("      An adult may only bring up to 2 children")
+print("      An evening barbecue is only for 2 day tickets")
+print("      A Family ticket consits of up to 3 children and 2 adults or seniors")
+print("      A Group ticket consists of 6 people or more\n")
+print("Ticket Type     Cost for One Day    Cost for Two Days")
+print("-----------------------------------------------------")
+print("One Adult            $20.00             $30.00")
+print("One Child            $12.00             $18.00")
+print("One Senior           $16.00             $24.00")
+print("Family               $60.00             $90.00")
+print("Group(per person)    $15.00             $22.50")
+print("")
+print("Extra Attractions                     Cost Per Person")
+print("-----------------------------------------------------")
+print("Lion Feeding                               $2.50")
+print("Penguin Feeding                            $2.00")
+print("Evening Barbecue(two day tickets only)     $5.00")
+print("")
+
+# Task 2
+from random import randint
+TT = ["Adult","Child","Senior","Family","Group"]
+Cost_one = [20.00,12.00,16.00,60.00,15.00]
+Cost_two = [30.00,18.00,24.00,90.00,22.50]
+Extra_one = ["Lion","Penguin"]
+Extra_two = ["Lion","Penguin","Barbecue"]
+Extra_cost = [2.50,2.00,5.00]
+Total = 0
+Price = 0
+n = 0
+m = 0
+NewTotal = 0
+T_num = int(input("How many ticket types do you want:"))
+while n < T_num:
+    T_type = input("What ticket type do you want:")
+    index = TT.index(T_type)
+    T_amount = int(input("How many of the specified tickets do you want:"))
+    T_day = int(input("How many days do you want the ticket for (1 or 2):"))
+    onepr = Cost_one[index]
+    twopr = Cost_two[index]
+    if T_day == 1:
+        if T_type == "Group":
+            Ppl = int(input("How many people are there:"))
+            if Ppl < 6:
+                print("You need 6 people minimum to book group tickets")
+                Ppl = int(input("How many people are there:"))
+            else:
+                pass
+            Price = Ppl * onepr
+            print("The cost of the specified tickets is $",Price)
+        else:
+           Price = T_amount * onepr
+           print("The cost of the specified tickets is $",Price)
+    elif T_day == 2:
+        if T_type == "Group":
+            Ppl = int(input("How many people are there:"))
+            if Ppl < 6:
+                print("You need 6 people minimum to book group tickets")
+                Ppl = int(input("How many people are there:"))
+            else:
+                continue
+            Price = Ppl * onepr
+            print("The cost of the specified tickets is $",Price)
+        else:
+           Price = T_amount * twopr
+           print("The cost of the specified tickets is $",Price)
+    else:
+        print("Please only enter 1 or 2")
+        continue
+    Total += Price
+    n=n+1
+Extra_num = int(input("How many extra attractions do you want:"))
+Extra_total = 0
+while m < Extra_num:
+    if Extra_num == 0:
+        break
+    else:
+        if T_day == 1:
+            Extra_pplnum = int(input("How many people want to go for the attraction:"))
+            Attraction = input("Which attraction do you want (Lion,Penguin):")
+            index1 = Extra_one.index(Attraction)
+            Extra_price = Extra_cost[index1]
+            Extra_total = (Extra_price * Extra_pplnum)
+            m += 1
+            print("The cost of the specified attraction is $",(Extra_total))
+        else:
+            Extra_pplnum = int(input("How many people want to go for the attraction:"))
+            Attraction = input("Which attraction do you want (Lion,Penguin,Barbecue):")
+            index1 = Extra_two.index(Attraction)
+            Extra_price = Extra_cost[index1]
+            Extra_total += (Extra_price * Extra_pplnum)
+            m += 1
+            print("The cost of the specified attraction is $",(Extra_total))
+
+FinalTotal = Extra_total + Total
+print("Your Total is $",FinalTotal)
+BC = randint(99999,1000000)
+print("Your Booking Code is:",BC)
+print("")
+
+#Task 3
+print("Lets's check if your booking is of the best value and if it is a valid booking")
+a = int(input("How many adults are there:"))
+s = int(input("How many seniors are there:"))
+c = int(input("How many children are there:"))
+Totppl = a + s + c
+a_ratio = a // 2
+s_ratio = s // 2
+c_ratio = c // 3
+if a == 0 and s == 0 and c > 0:
+    print("Your booking is invalid, since a child has to be accompanied by an adult or senior")
+elif c > (a * 2) or c > (s * 2):
+    print("Your booking is invalid, since 1 adult or 1 senior may only bring up to 2 children")
+else:
+    new_cart = []
+    family_tix = 0
+    if a_ratio * c_ratio > 0:
+        min_tix = min(a_ratio,c_ratio)
+        familt tix += min_tix
+        a -= min_tix * 2
+        c -= min_tix * 2
+    while T_day == 1:
+        if familytix > 0
+            NewTotal = familytix * 60
+            NewFinalTotal = NewTotal
+            new_cart.append()
+
+
+
+
+    if s_ratio * c_ratio > 0:
+        min_tix = min(s_ratio,c_ratio)
+        familt tix += min_tix
+        s -= min_tix * 2
+        c -= min_tix * 2
+    while T_day == 1:
+        if familytix > 0
+            NewTotal = familytix * 60
+            NewFinalTotal = NewTotal
+            new_cart.append()
