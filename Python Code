@@ -45,7 +45,10 @@ T_num = int(input("How many ticket types do you want:"))
 while n < T_num:
     T_type = input("What ticket type do you want:")
     index = TT.index(T_type)
-    T_amount = int(input("How many of the specified tickets do you want:"))
+    if T_type == "Group":
+        pass
+    else:
+        T_amount = int(input("How many of the specified tickets do you want:"))
     onepr = Cost_one[index]
     twopr = Cost_two[index]
     if T_day == 1:
@@ -69,7 +72,7 @@ while n < T_num:
                 Ppl = int(input("How many people are there:"))
             else:
                 pass
-            Price = Ppl * onepr
+            Price = Ppl * twopr
             print("The cost of the",T_type,"tickets is $",Price)
         else:
            Price = T_amount * twopr
@@ -114,12 +117,12 @@ c = int(input("How many children are there:"))
 family_tix = 0
 New_total = 0
 print("")
-print("A better value would be:")
 if a == 0 and s == 0 and c >= 0:
     print("Your booking is invalid, since a child has to be accompanied by an adult or senior or there are no people to book tickets for")
 elif c > ((a + s) * 2):
     print("Your booking is invalid, since 1 adult or 1 senior may only bring up to 2 children")
 else:
+    print("The best value is:")
     Count = [a,s,c]
     for i in range(2):
         ratio = Count[i] // 2
@@ -179,9 +182,10 @@ else:
 
     NewFinal_total = New_total + Extra_total
     if NewFinal_total < FinalTotal:
+        print("The cost of the attractions is $",Extra_total)
         print("Your New Total is $",NewFinal_total)
         NewBooking_Code = randint(99999,1000000)
         print("Your New Booking Code is",NewBooking_Code)
         print("Your Booking is for",Date)
     else:
-        print("Your booking is of the best value")
+        print("Your booking is already of the best value")
