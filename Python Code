@@ -133,16 +133,16 @@ else:
             Count[2] -= min_tix * 3
             Count[i] -= min_tix * 2
     if family_tix > 0:
-            if T_day == 1:
-                New_total += family_tix * 60.00
-                print(family_tix,"Family ticket(s) costing $",New_total)
-            else:
-                New_total += family_tix * 90.00
-                print(family_tix,"Family ticket(s) costing $",New_total)
+        if T_day == 1:
+            New_total += family_tix * 60.00
+            print(family_tix,"Family ticket(s) costing $",New_total)
+        else:
+            New_total += family_tix * 90.00
+            print(family_tix,"Family ticket(s) costing $",New_total)
     if T_day == 1:
         Totppl = sum(Count)
         if Totppl >= 6:
-            New_total = Totppl * 15.00
+            New_total += Totppl * 15.00
             print("Group ticket(s) costing $",New_total)
         else:
             New_cart = ["Adult","Senior","Child"]
@@ -162,9 +162,9 @@ else:
     else:
         Totppl = sum(Count)
         if Totppl >= 6:
-            New_total = Totppl * 22.50
+            New_total += Totppl * 22.50
             print("Group ticket(s) costing $",New_total)
-        else: 
+        else:
             New_cart = ["Adult","Senior","Child"]
             Newcart_price = [30.00,24.00,18.00]
             for x in range(3):
