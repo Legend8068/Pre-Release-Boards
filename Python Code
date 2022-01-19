@@ -2,7 +2,7 @@
 print("Note: Be aware of upper and lower case in spellings when booking")
 print("      An adult may only bring up to 2 children")
 print("      An evening barbecue is only for 2 day tickets")
-print("      A Family ticket consits of up to 3 children and 2 adults or seniors")
+print("      A Family ticket consists of up to 3 children and 2 adults or seniors")
 print("      A Group ticket consists of 6 people or more\n")
 print("Ticket Type     Cost for One Day    Cost for Two Days")
 print("-----------------------------------------------------")
