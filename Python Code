@@ -114,7 +114,7 @@ print("Let's check if your booking is of the best value and if it is a valid boo
 a = int(input("How many adults are there:"))
 s = int(input("How many seniors are there:"))
 c = int(input("How many children are there:"))
-family_tix = 0
+Family_tix = 0
 New_total = 0
 print("")
 if a == 0 and s == 0 and c >= 0:
@@ -129,56 +129,62 @@ else:
         c_ratio = Count[2] // 3
         if ratio * c_ratio > 0:
             min_tix = min(ratio, c_ratio)
-            family_tix += min_tix
+            Family_tix += min_tix
             Count[2] -= min_tix * 3
             Count[i] -= min_tix * 2
-    if family_tix > 0:
+    if Family_tix > 0:
         if T_day == 1:
-            New_total += family_tix * 60.00
-            print(family_tix,"Family ticket(s) costing $",New_total)
+            Family_total = Family_tix * 60.00
+            New_total += Family_total
+            print(Family_tix,"Family ticket(s) costing $",Family_total)
         else:
-            New_total += family_tix * 90.00
-            print(family_tix,"Family ticket(s) costing $",New_total)
+            Family_total = Family_tix * 90.00
+            New_total += Family_total
+            print(Family_tix,"Family ticket(s) costing $",Family_total)
     if T_day == 1:
         Totppl = sum(Count)
         if Totppl >= 6:
-            New_total += Totppl * 15.00
-            print("Group ticket(s) costing $",New_total)
+            Group_total = Totppl * 15.00
+            New_total += Group_total
+            print("Group ticket(s) of",Totppl,"people costing $",Group_total)
         else:
             New_cart = ["Adult","Senior","Child"]
             Newcart_price = [20.00,16.00,12.00]
             for x in range(3):
                 if Count[x] > 0:
-                    if Count[x] == Count[0]:
+                    if Count[x] == a:
                         Tix = "Adult"
-                    elif Count[x] == Count[1]:
+                    elif Count[x] == s:
                         Tix = "Senior"
                     else:
                         Tix = "Child"
                     index3 = New_cart.index(Tix)
                     New_price = Newcart_price[index3]
-                    New_total += Count[x] * New_price
-                    print(Count[x],Tix,"ticket(s) costing $",New_total)
+                    Remaining_total = Count[x] * New_price
+                    New_total += Remaining_total
+                    print(Count[x],Tix,"ticket(s) costing $",Remaining_total)
     else:
         Totppl = sum(Count)
         if Totppl >= 6:
-            New_total += Totppl * 22.50
-            print("Group ticket(s) costing $",New_total)
+            Group_total = Totppl * 22.50
+            New_total += Group_total
+            print("Group ticket(s) of",Totppl,"people costing $",Group_total)
         else:
             New_cart = ["Adult","Senior","Child"]
             Newcart_price = [30.00,24.00,18.00]
             for x in range(3):
                 if Count[x] > 0:
-                    if Count[x] == Count[0]:
+                    if Count[x] == a:
                         Tix = "Adult"
-                    elif Count[x] == Count[1]:
+                    elif Count[x] == s:
                         Tix = "Senior"
                     else:
                         Tix = "Child"
                     index3 = New_cart.index(Tix)
                     New_price = Newcart_price[index3]
-                    New_total += Count[x] * New_price
-                    print(Count[x],Tix,"ticket(s) costing $",New_total)
+                    Remaining_total = Count[x] * New_price
+                    New_total += Remaining_total
+                    print(Count[x],Tix,"ticket(s) costing $",Remaining_total)
 
     NewFinal_total = New_total + Extra_total
     if NewFinal_total < FinalTotal:
