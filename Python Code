@@ -1,4 +1,5 @@
 # Task 1
+from random import randint
 print("Note: Be aware of upper and lower case in spellings when booking")
 print("      An adult may only bring up to 2 children")
 print("      An evening barbecue is only for 2 day tickets")
@@ -20,7 +21,6 @@ print("Evening Barbecue(two day tickets only)     $5.00")
 print("")
 
 # Task 2
-from random import randint
 TT = ["Adult","Child","Senior","Family","Group"]
 Cost_one = [20.00,12.00,16.00,60.00,15.00]
 Cost_two = [30.00,18.00,24.00,90.00,22.50]
@@ -62,8 +62,8 @@ while n < T_num:
             Price = Ppl * onepr
             print("The cost of the",T_type,"tickets is $",Price)
         else:
-           Price = T_amount * onepr
-           print("The cost of the",T_type,"tickets is $",Price)
+            Price = T_amount * onepr
+            print("The cost of the",T_type,"tickets is $",Price)
     elif T_day == 2:
         if T_type == "Group":
             Ppl = int(input("How many people are there:"))
@@ -75,8 +75,8 @@ while n < T_num:
             Price = Ppl * twopr
             print("The cost of the",T_type,"tickets is $",Price)
         else:
-           Price = T_amount * twopr
-           print("The cost of the",T_type,"tickets is $",Price)
+            Price = T_amount * twopr
+            print("The cost of the",T_type,"tickets is $",Price)
     Total += Price
     n += 1
 Extra_num = int(input("How many extra attractions do you want:"))
@@ -86,21 +86,21 @@ while m < Extra_num:
         break
     else:
         if T_day == 1:
-            Extra_pplnum = int(input("How many people want to go for the extra attraction:"))
+            Extra_ppl = int(input("How many people want to go for the extra attraction:"))
             Attraction = input("Which extra attraction do you want (Lion,Penguin):")
             index1 = Extra_one.index(Attraction)
             Extra_price = Extra_cost[index1]
-            Extra_total = (Extra_price * Extra_pplnum)
+            Extra_total = (Extra_price * Extra_ppl)
             m += 1
-            print("The cost of the",Attraction,"attraction is $",(Extra_total))
+            print("The cost of the",Attraction,"attraction is $",Extra_total)
         else:
-            Extra_pplnum = int(input("How many people want to go for extra the attraction:"))
+            Extra_ppl = int(input("How many people want to go for extra the attraction:"))
             Attraction = input("Which extra attraction do you want (Lion,Penguin,Barbecue):")
             index1 = Extra_two.index(Attraction)
             Extra_price = Extra_cost[index1]
-            Extra_total += (Extra_price * Extra_pplnum)
+            Extra_total += (Extra_price * Extra_ppl)
             m += 1
-            print("The cost of the",Attraction,"attraction is $",(Extra_total))
+            print("The cost of the",Attraction,"attraction is $",Extra_total)
 
 FinalTotal = Extra_total + Total
 print("Your Total is $",FinalTotal)
@@ -110,7 +110,7 @@ print("Your Booking is for",Date)
 print("")
 
 #Task 3
-print("Lets's check if your booking is of the best value and if it is a valid booking")
+print("Let's check if your booking is of the best value and if it is a valid booking")
 a = int(input("How many adults are there:"))
 s = int(input("How many seniors are there:"))
 c = int(input("How many children are there:"))
@@ -118,7 +118,7 @@ family_tix = 0
 New_total = 0
 print("")
 if a == 0 and s == 0 and c >= 0:
-    print("Your booking is invalid, since a child has to be accompanied by an adult or senior or there are no people to book tickets for")
+    print("Your booking is invalid, since a child has to be accompanied by an adult or senior or the total number of people is 0")
 elif c > ((a + s) * 2):
     print("Your booking is invalid, since 1 adult or 1 senior may only bring up to 2 children")
 else:
