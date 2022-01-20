@@ -21,12 +21,12 @@ print("Evening Barbecue(two day tickets only)     $5.00")
 print("")
 
 # Task 2
-TT = ["Adult","Child","Senior","Family","Group"]
-Cost_one = [20.00,12.00,16.00,60.00,15.00]
-Cost_two = [30.00,18.00,24.00,90.00,22.50]
-Extra_one = ["Lion","Penguin"]
-Extra_two = ["Lion","Penguin","Barbecue"]
-Extra_cost = [2.50,2.00,5.00]
+TT = ["Adult", "Child", "Senior", "Family", "Group"]
+Cost_one = [20.00, 12.00, 16.00, 60.00, 15.00]
+Cost_two = [30.00, 18.00, 24.00, 90.00, 22.50]
+Extra_one = ["Lion", "Penguin"]
+Extra_two = ["Lion", "Penguin", "Barbecue"]
+Extra_cost = [2.50, 2.00, 5.00]
 Total = 0
 Price = 0
 n = 0
@@ -60,10 +60,10 @@ while n < T_num:
             else:
                 pass
             Price = Ppl * onepr
-            print("The cost of the",T_type,"tickets is $",Price)
+            print("The cost of the", T_type, "tickets is $", Price)
         else:
             Price = T_amount * onepr
-            print("The cost of the",T_type,"tickets is $",Price)
+            print("The cost of the", T_type, "tickets is $", Price)
     elif T_day == 2:
         if T_type == "Group":
             Ppl = int(input("How many people are there:"))
@@ -73,10 +73,10 @@ while n < T_num:
             else:
                 pass
             Price = Ppl * twopr
-            print("The cost of the",T_type,"tickets is $",Price)
+            print("The cost of the", T_type, "tickets is $", Price)
         else:
             Price = T_amount * twopr
-            print("The cost of the",T_type,"tickets is $",Price)
+            print("The cost of the", T_type, "tickets is $", Price)
     Total += Price
     n += 1
 Extra_num = int(input("How many extra attractions do you want:"))
@@ -92,7 +92,7 @@ while m < Extra_num:
             Extra_price = Extra_cost[index1]
             Extra_total = (Extra_price * Extra_ppl)
             m += 1
-            print("The cost of the",Attraction,"attraction is $",Extra_total)
+            print("The cost of the", Attraction, "Attraction is $", Extra_total)
         else:
             Extra_ppl = int(input("How many people want to go for extra the attraction:"))
             Attraction = input("Which extra attraction do you want (Lion,Penguin,Barbecue):")
@@ -100,16 +100,17 @@ while m < Extra_num:
             Extra_price = Extra_cost[index1]
             Extra_total += (Extra_price * Extra_ppl)
             m += 1
-            print("The cost of the",Attraction,"attraction is $",Extra_total)
+            print("The cost of the", Attraction, "attraction is $", Extra_total)
 
 FinalTotal = Extra_total + Total
-print("Your Total is $",FinalTotal)
-Booking_code = randint(99999,1000000)
-print("Your Booking Code is:",Booking_code)
-print("Your Booking is for",Date)
+print("")
+print("Your Total is $", FinalTotal)
+Booking_code = randint(99999, 1000000)
+print("Your Booking Code is:", Booking_code)
+print("Your Booking is for", Date)
 print("")
 
-#Task 3
+# Task 3
 print("Let's check if your booking is of the best value and if it is a valid booking")
 a = int(input("How many adults are there:"))
 s = int(input("How many seniors are there:"))
@@ -123,33 +124,33 @@ elif c > ((a + s) * 2):
     print("Your booking is invalid, since 1 adult or 1 senior may only bring up to 2 children")
 else:
     print("The best value is:")
-    Count = [a,s,c]
+    Count = [a, s, c]
     for i in range(2):
         ratio = Count[i] // 2
         c_ratio = Count[2] // 3
         if ratio * c_ratio > 0:
-            min_tix = min(ratio, c_ratio)
-            Family_tix += min_tix
-            Count[2] -= min_tix * 3
-            Count[i] -= min_tix * 2
+            Min_tix = min(ratio, c_ratio)
+            Family_tix += Min_tix
+            Count[2] -= Min_tix * 3
+            Count[i] -= Min_tix * 2
     if Family_tix > 0:
         if T_day == 1:
             Family_total = Family_tix * 60.00
             New_total += Family_total
-            print(Family_tix,"Family ticket(s) costing $",Family_total)
+            print(Family_tix, "Family ticket(s) costing $", Family_total)
         else:
             Family_total = Family_tix * 90.00
             New_total += Family_total
-            print(Family_tix,"Family ticket(s) costing $",Family_total)
+            print(Family_tix, "Family ticket(s) costing $", Family_total)
     if T_day == 1:
         Totppl = sum(Count)
         if Totppl >= 6:
             Group_total = Totppl * 15.00
             New_total += Group_total
-            print("Group ticket(s) of",Totppl,"people costing $",Group_total)
+            print("Group ticket(s) of", Totppl, "people costing $", Group_total)
         else:
-            New_cart = ["Adult","Senior","Child"]
-            Newcart_price = [20.00,16.00,12.00]
+            New_cart = ["Adult", "Senior", "Child"]
+            Newcart_price = [20.00, 16.00, 12.00]
             for x in range(3):
                 if Count[x] > 0:
                     if Count[x] == a:
@@ -162,16 +163,16 @@ else:
                     New_price = Newcart_price[index3]
                     Remaining_total = Count[x] * New_price
                     New_total += Remaining_total
-                    print(Count[x],Tix,"ticket(s) costing $",Remaining_total)
+                    print(Count[x], Tix, "ticket(s) costing $", Remaining_total)
     else:
         Totppl = sum(Count)
         if Totppl >= 6:
             Group_total = Totppl * 22.50
             New_total += Group_total
-            print("Group ticket(s) of",Totppl,"people costing $",Group_total)
+            print("Group ticket(s) of", Totppl, "people costing $", Group_total)
         else:
-            New_cart = ["Adult","Senior","Child"]
-            Newcart_price = [30.00,24.00,18.00]
+            New_cart = ["Adult", "Senior", "Child"]
+            Newcart_price = [30.00, 24.00, 18.00]
             for x in range(3):
                 if Count[x] > 0:
                     if Count[x] == a:
@@ -184,14 +185,15 @@ else:
                     New_price = Newcart_price[index3]
                     Remaining_total = Count[x] * New_price
                     New_total += Remaining_total
-                    print(Count[x],Tix,"ticket(s) costing $",Remaining_total)
+                    print(Count[x], Tix, "ticket(s) costing $", Remaining_total)
 
     NewFinal_total = New_total + Extra_total
     if NewFinal_total < FinalTotal:
-        print("The cost of the attractions is $",Extra_total)
-        print("Your New Total is $",NewFinal_total)
-        NewBooking_Code = randint(99999,1000000)
-        print("Your New Booking Code is",NewBooking_Code)
-        print("Your Booking is for",Date)
+        print("")
+        print("The cost of the attractions is $", Extra_total)
+        print("Your New Total is $", NewFinal_total)
+        NewBooking_Code = randint(99999, 1000000)
+        print("Your New Booking Code is", NewBooking_Code)
+        print("Your Booking is for", Date)
     else:
         print("Your booking is already of the best value")
