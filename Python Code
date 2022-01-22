@@ -34,7 +34,7 @@ n = 0
 m = 0
 T_day = int(input("How many days do you want the ticket for (1 or 2):"))
 while T_day != 1 and T_day != 2:
-    T_day = int(input("Please enter only 1 or 2 for number of days of ticket"))
+    T_day = int(input("Please enter only 1 or 2 for number of days of ticket:"))
 print("The days available for booking are Mon, Tue, Wed, Thurs, Fri, Sat, Sun")
 Date = input("Which day(s) do you want to book for:")
 T_num = int(input("How many ticket types do you want:"))
@@ -45,13 +45,12 @@ while n < T_num:
     T_type = input("What ticket type do you want:")
     while T_type != "Adult" and T_type != "Child" and T_type != "Senior" and T_type != "Family" and T_type != "Group":
         T_type = input("Please enter a valid ticket type:")
-    index = TT.index(T_type)
     if T_type == "Group":
         pass
     else:
         T_amount = int(input("How many of the specified tickets do you want:"))
-    One_price = Cost_one[index]
-    Two_price = Cost_two[index]
+    One_price = Cost_one[TT.index(T_type)]
+    Two_price = Cost_two[TT.index(T_type)]
     if T_day == 1:
         if T_type == "Group":
             Ppl = int(input("How many people are there:"))
@@ -68,7 +67,7 @@ while n < T_num:
                 Tix_total += 5 * T_amount
             else:
                 Tix_total += T_amount
-    elif T_day == 2:
+    else:
         if T_type == "Group":
             Ppl = int(input("How many people are there:"))
             while Ppl < 6:
@@ -97,8 +96,7 @@ while m < Extra_num:
             Attraction = input("Which extra attraction do you want (Lion,Penguin):")
             while Attraction != "Lion" and Attraction != "Penguin":
                 Attraction = input("Please enter a valid attraction (Lion,Penguin):")
-            index1 = Extra_one.index(Attraction)
-            Extra_price = Extra_cost[index1]
+            Extra_price = Extra_cost[Extra_one.index(Attraction)]
             Extra_total = (Extra_price * Extra_ppl)
             m += 1
             print("The cost of the", Attraction, "Attraction is $", Extra_total)
@@ -107,8 +105,7 @@ while m < Extra_num:
             Attraction = input("Which extra attraction do you want (Lion,Penguin,Barbecue):")
             while Attraction != "Lion" and Attraction != "Penguin" and Attraction != "Barbecue":
                 Attraction = input("Please enter a valid attraction (Lion,Penguin,Barbecue):")
-            index1 = Extra_two.index(Attraction)
-            Extra_price = Extra_cost[index1]
+            Extra_price = Extra_cost[Extra_two.index(Attraction)]
             Extra_total += (Extra_price * Extra_ppl)
             m += 1
             print("The cost of the", Attraction, "attraction is $", Extra_total)
@@ -124,6 +121,7 @@ else:
     print("Your Booking is for", Date)
     print("")
 
+# Task 3
 # Task 3
 while Total != 0:
     print("Let's check if your booking is of the best value and if it is a valid booking")
@@ -171,21 +169,18 @@ while Total != 0:
                 New_total += Group_total
                 print("Group ticket(s) of", Totppl, "people costing $", Group_total)
             else:
-                New_cart = ["Adult", "Senior", "Child"]
-                Newcart_price = [20.00, 16.00, 12.00]
                 for x in range(3):
                     if Count[x] > 0:
-                        if Count[x] == Count[0]:
-                            Tix = "Adult"
-                        elif Count[x] == Count[1]:
-                            Tix = "Senior"
+                        Tix = ["Adult", "Senior", "Child"]
+                        if Tix[x] == Tix[0]:
+                            New_price = 20.00
+                        elif Tix[x] == Tix[1]:
+                            New_price = 16.00
                         else:
-                            Tix = "Child"
-                        index3 = New_cart.index(Tix)
-                        New_price = Newcart_price[index3]
+                            New_price = 12.00
                         Remaining_total = Count[x] * New_price
                         New_total += Remaining_total
-                        print(Count[x], Tix, "ticket(s) costing $", Remaining_total)
+                        print(Count[x], Tix[x], "ticket(s) costing $", Remaining_total)
                     else:
                         pass
         else:
@@ -195,21 +190,18 @@ while Total != 0:
                 New_total += Group_total
                 print("Group ticket(s) of", Totppl, "people costing $", Group_total)
             else:
-                New_cart = ["Adult", "Senior", "Child"]
-                Newcart_price = [30.00, 24.00, 18.00]
                 for x in range(3):
                     if Count[x] > 0:
-                        if Count[x] == Count[0]:
-                            Tix = "Adult"
-                        elif Count[x] == Count[1]:
-                            Tix = "Senior"
+                        Tix = ["Adult", "Senior", "Child"]
+                        if Tix[x] == Tix[0]:
+                            New_price = 30.00
+                        elif Tix[x] == Tix[1]:
+                            New_price = 24.00
                         else:
-                            Tix = "Child"
-                        index3 = New_cart.index(Tix)
-                        New_price = Newcart_price[index3]
+                            New_price = 18.00
                         Remaining_total = Count[x] * New_price
                         New_total += Remaining_total
-                        print(Count[x], Tix, "ticket(s) costing $", Remaining_total)
+                        print(Count[x], Tix[x], "ticket(s) costing $", Remaining_total)
                     else:
                         pass
 
