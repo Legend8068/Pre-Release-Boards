@@ -30,6 +30,7 @@ Extra_cost = [2.50, 2.00, 5.00]
 Total = 0
 Price = 0
 Tix_total = 0
+Extra_total = 0
 n = 0
 m = 0
 T_day = int(input("How many days do you want the ticket for (1 or 2):"))
@@ -86,25 +87,38 @@ while n < T_num:
     Total += Price
     n += 1
 Extra_num = int(input("How many extra attractions do you want:"))
-Extra_total = 0
+if T_day == 1:
+    while Extra_num > 2:
+        print("There are only 2 extra attractions for 1 day tickets")
+        Extra_num = int(input("How many extra attractions do you want:"))
+else:
+    while Extra_num > 3:
+        print("There are only 3 extra attractions for 2 day tickets")
+        Extra_num = int(input("How many extra attractions do you want:"))
 while m < Extra_num:
     if Extra_num == 0:
         break
     else:
         if T_day == 1:
-            Extra_ppl = int(input("How many people want to go for the extra attraction:"))
             Attraction = input("Which extra attraction do you want (Lion,Penguin):")
             while Attraction != "Lion" and Attraction != "Penguin":
                 Attraction = input("Please enter a valid attraction (Lion,Penguin):")
+            Extra_ppl = int(input("How many people want to go for the extra attraction:"))
+            while Extra_ppl > Tix_total:
+                print("There are only", Tix_total, "people")
+                Extra_ppl = int(input("How many people want to go for the extra attraction:"))
             Extra_price = Extra_cost[Extra_one.index(Attraction)]
-            Extra_total = (Extra_price * Extra_ppl)
+            Extra_total += (Extra_price * Extra_ppl)
             m += 1
             print("The cost of the", Attraction, "Attraction is $", Extra_total)
         else:
-            Extra_ppl = int(input("How many people want to go for extra the attraction:"))
             Attraction = input("Which extra attraction do you want (Lion,Penguin,Barbecue):")
             while Attraction != "Lion" and Attraction != "Penguin" and Attraction != "Barbecue":
                 Attraction = input("Please enter a valid attraction (Lion,Penguin,Barbecue):")
+            Extra_ppl = int(input("How many people want to go for extra the attraction:"))
+            while Extra_ppl > Tix_total:
+                print("There are only", Tix_total, "people")
+                Extra_ppl = int(input("How many people want to go for the extra attraction:"))
             Extra_price = Extra_cost[Extra_two.index(Attraction)]
             Extra_total += (Extra_price * Extra_ppl)
             m += 1
@@ -131,7 +145,7 @@ while Total != 0:
     New_total = 0
     print("")
     if a == 0 and s == 0 and c >= 0:
-        print("Your booking is invalid, since a child has to be accompanied by an adult or senior or the total number of people is 0")
+        print("Your booking is invalid, since a child has to be accompanied by an adult or senior,  or the total number of people is 0")
     elif c > ((a + s) * 2):
         print("Your booking is invalid, since 1 adult or 1 senior may only bring up to 2 children")
     elif Tix_total != (a + s + c):
@@ -206,8 +220,8 @@ while Total != 0:
 
         NewFinal_total = New_total + Extra_total
         if NewFinal_total < FinalTotal:
-            print("")
             print("The cost of the attractions is $", Extra_total)
+            print("")
             print("Your New Total is $", NewFinal_total)
             NewBooking_Code = randint(99999, 1000000)
             print("Your New Booking Code is", NewBooking_Code)
