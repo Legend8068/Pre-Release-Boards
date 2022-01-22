@@ -122,7 +122,6 @@ else:
     print("")
 
 # Task 3
-# Task 3
 while Total != 0:
     print("Let's check if your booking is of the best value and if it is a valid booking")
     a = int(input("How many adults are there:"))
