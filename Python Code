@@ -46,10 +46,6 @@ while n < T_num:
     T_type = input("What ticket type do you want:")
     while T_type != "Adult" and T_type != "Child" and T_type != "Senior" and T_type != "Family" and T_type != "Group":
         T_type = input("Please enter a valid ticket type:")
-    if T_type == "Group":
-        pass
-    else:
-        T_amount = int(input("How many of the specified tickets do you want:"))
     One_price = Cost_one[TT.index(T_type)]
     Two_price = Cost_two[TT.index(T_type)]
     if T_day == 1:
@@ -62,6 +58,7 @@ while n < T_num:
             Price = Ppl * One_price
             print("The cost of the", T_type, "tickets is $", Price)
         else:
+            T_amount = int(input("How many of the specified tickets do you want:"))
             Price = T_amount * One_price
             print("The cost of the", T_type, "tickets is $", Price)
             if T_type == "Family":
@@ -78,6 +75,7 @@ while n < T_num:
             Price = Ppl * Two_price
             print("The cost of the", T_type, "tickets is $", Price)
         else:
+            T_amount = int(input("How many of the specified tickets do you want:"))
             Price = T_amount * Two_price
             print("The cost of the", T_type, "tickets is $", Price)
             if T_type == "Family":
@@ -128,7 +126,7 @@ FinalTotal = Extra_total + Total
 print("")
 print("Your Total is $", FinalTotal)
 if Total == 0:
-    print("You have not booked any tickets since the total is 0, manually restart the order")
+    print("You have not booked any tickets since the total is 0, restart the order")
 else:
     Booking_code = randint(99999, 1000000)
     print("Your Booking Code is:", Booking_code)
