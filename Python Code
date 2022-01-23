@@ -21,14 +21,13 @@ print("Evening Barbecue(two day tickets only)     $5.00")
 print("")
 
 # Task 2
-TT = ["Adult", "Child", "Senior", "Family", "Group"]
+Tix_type = ["Adult", "Child", "Senior", "Family", "Group"]
 Cost_one = [20.00, 12.00, 16.00, 60.00, 15.00]
 Cost_two = [30.00, 18.00, 24.00, 90.00, 22.50]
 Extra_one = ["Lion", "Penguin"]
 Extra_two = ["Lion", "Penguin", "Barbecue"]
 Extra_cost = [2.50, 2.00, 5.00]
 Total = 0
-Price = 0
 Tix_total = 0
 Extra_total = 0
 n = 0
@@ -46,8 +45,8 @@ while n < T_num:
     T_type = input("What ticket type do you want:")
     while T_type != "Adult" and T_type != "Child" and T_type != "Senior" and T_type != "Family" and T_type != "Group":
         T_type = input("Please enter a valid ticket type:")
-    One_price = Cost_one[TT.index(T_type)]
-    Two_price = Cost_two[TT.index(T_type)]
+    One_price = Cost_one[Tix_type.index(T_type)]
+    Two_price = Cost_two[Tix_type.index(T_type)]
     if T_day == 1:
         if T_type == "Group":
             Ppl = int(input("How many people are there:"))
@@ -84,7 +83,10 @@ while n < T_num:
                 Tix_total += T_amount
     Total += Price
     n += 1
-Extra_num = int(input("How many extra attractions do you want:"))
+if Tix_total > 0:
+    Extra_num = int(input("How many extra attractions do you want:"))
+else:
+    Extra_num = 0
 if T_day == 1:
     while Extra_num > 2:
         print("There are only 2 extra attractions for 1 day tickets")
@@ -106,9 +108,8 @@ while m < Extra_num:
                 print("There are only", Tix_total, "people")
                 Extra_ppl = int(input("How many people want to go for the extra attraction:"))
             Extra_price = Extra_cost[Extra_one.index(Attraction)]
-            Extra_total += (Extra_price * Extra_ppl)
-            m += 1
-            print("The cost of the", Attraction, "Attraction is $", Extra_total)
+            Xtra_price = (Extra_price * Extra_ppl)
+            print("The cost of the", Attraction, "Attraction is $", Xtra_price)
         else:
             Attraction = input("Which extra attraction do you want (Lion,Penguin,Barbecue):")
             while Attraction != "Lion" and Attraction != "Penguin" and Attraction != "Barbecue":
@@ -118,9 +119,10 @@ while m < Extra_num:
                 print("There are only", Tix_total, "people")
                 Extra_ppl = int(input("How many people want to go for the extra attraction:"))
             Extra_price = Extra_cost[Extra_two.index(Attraction)]
-            Extra_total += (Extra_price * Extra_ppl)
-            m += 1
-            print("The cost of the", Attraction, "attraction is $", Extra_total)
+            Xtra_price = (Extra_price * Extra_ppl)
+            print("The cost of the", Attraction, "attraction is $", Xtra_price)
+        Extra_total += Xtra_price
+        m += 1
 
 FinalTotal = Extra_total + Total
 print("")
@@ -142,13 +144,13 @@ while Total != 0:
     Family_tix = 0
     New_total = 0
     print("")
-    if a == 0 and s == 0 and c >= 0:
-        print("Your booking is invalid, since a child has to be accompanied by an adult or senior,  or the total number of people is 0")
-    elif c > ((a + s) * 2):
-        print("Your booking is invalid, since 1 adult or 1 senior may only bring up to 2 children")
-    elif Tix_total != (a + s + c):
+    if Tix_total != (a + s + c):
         print("Your total number of people does not match the number of tickets booked")
         break
+    elif a == 0 and s == 0 and c >= 0:
+        print("Your booking is invalid, since a child has to be accompanied by an adult or senior")
+    elif c > ((a + s) * 2):
+        print("Your booking is invalid, since 1 adult or 1 senior may only bring up to 2 children")
     else:
         print("The best value is:")
         Count = [a, s, c]
@@ -165,12 +167,11 @@ while Total != 0:
         if Family_tix > 0:
             if T_day == 1:
                 Family_total = Family_tix * 60.00
-                New_total += Family_total
                 print(Family_tix, "Family ticket(s) costing $", Family_total)
             else:
                 Family_total = Family_tix * 90.00
-                New_total += Family_total
                 print(Family_tix, "Family ticket(s) costing $", Family_total)
+            New_total += Family_total
         else:
             pass
         if T_day == 1:
