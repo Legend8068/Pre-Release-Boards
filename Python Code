@@ -85,16 +85,16 @@ while n < T_num:
     n += 1
 if Tix_total > 0:
     Extra_num = int(input("How many extra attractions do you want:"))
+    if T_day == 1:
+        while Extra_num > 2:
+            print("There are only 2 extra attractions for 1 day tickets")
+            Extra_num = int(input("How many extra attractions do you want:"))
+    else:
+        while Extra_num > 3:
+            print("There are only 3 extra attractions for 2 day tickets")
+            Extra_num = int(input("How many extra attractions do you want:"))
 else:
     Extra_num = 0
-if T_day == 1:
-    while Extra_num > 2:
-        print("There are only 2 extra attractions for 1 day tickets")
-        Extra_num = int(input("How many extra attractions do you want:"))
-else:
-    while Extra_num > 3:
-        print("There are only 3 extra attractions for 2 day tickets")
-        Extra_num = int(input("How many extra attractions do you want:"))
 while m < Extra_num:
     if Extra_num == 0:
         break
@@ -108,8 +108,8 @@ while m < Extra_num:
                 print("There are only", Tix_total, "people")
                 Extra_ppl = int(input("How many people want to go for the extra attraction:"))
             Extra_price = Extra_cost[Extra_one.index(Attraction)]
-            Xtra_price = (Extra_price * Extra_ppl)
-            print("The cost of the", Attraction, "Attraction is $", Xtra_price)
+            Atra_price = (Extra_price * Extra_ppl)
+            print("The cost of the", Attraction, "Attraction is $", Atra_price)
         else:
             Attraction = input("Which extra attraction do you want (Lion,Penguin,Barbecue):")
             while Attraction != "Lion" and Attraction != "Penguin" and Attraction != "Barbecue":
@@ -119,9 +119,9 @@ while m < Extra_num:
                 print("There are only", Tix_total, "people")
                 Extra_ppl = int(input("How many people want to go for the extra attraction:"))
             Extra_price = Extra_cost[Extra_two.index(Attraction)]
-            Xtra_price = (Extra_price * Extra_ppl)
-            print("The cost of the", Attraction, "attraction is $", Xtra_price)
-        Extra_total += Xtra_price
+            Atra_price = (Extra_price * Extra_ppl)
+            print("The cost of the", Attraction, "attraction is $", Atra_price)
+        Extra_total += Atra_price
         m += 1
 
 FinalTotal = Extra_total + Total
