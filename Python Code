@@ -1,6 +1,6 @@
 # Task 1
 from random import randint
-print("Note: Be aware of upper and lower case in spellings when booking")
+print("Note: All text entered should have the first letter of the word in upper case when booking")
 print("      An adult may only bring up to 2 children")
 print("      An evening barbecue is only for 2 day tickets")
 print("      A Family ticket consists of 3 children and 2 adults or seniors")
@@ -39,7 +39,7 @@ print("The days available for booking are Mon, Tue, Wed, Thurs, Fri, Sat, Sun")
 Date = input("Which day(s) do you want to book for:")
 T_num = int(input("How many ticket types do you want:"))
 while T_num > 5:
-    print("The maximum is 5")
+    print("There are only 5 ticket types")
     T_num = int(input("How many ticket types do you want:"))
 while n < T_num:
     T_type = input("What ticket type do you want:")
@@ -128,7 +128,7 @@ FinalTotal = Extra_total + Total
 print("")
 print("Your Total is $", FinalTotal)
 if Total == 0:
-    print("You have not booked any tickets since the total is 0, restart the order")
+    print("You have not booked any tickets since the total is 0")
 else:
     Booking_code = randint(99999, 1000000)
     print("Your Booking Code is:", Booking_code)
@@ -200,7 +200,7 @@ while Total != 0:
             if Totppl >= 6:
                 Group_total = Totppl * 22.50
                 New_total += Group_total
-                print("Group ticket(s) of", Totppl, "people costing $", Group_total)
+                print("A Group ticket of", Totppl, "people costing $", Group_total)
             else:
                 for x in range(3):
                     if Count[x] > 0:
